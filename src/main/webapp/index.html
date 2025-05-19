@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1 id="helloModule"></h1>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // 这里可以添加你的JavaScript代码
+        // 获得session中的username
+        var username = "${sessionScope.username}";
+        // 如果username不为空，在id为helloModule的元素中显示欢迎信息
+        if (username) {
+            $("#helloModule").text("欢迎 " + username + " 登录");
+        } else {
+            $("#helloModule").text("欢迎登录");
+        }
+
+        console.log("Hello World! it is js");
+    });
+</script>
+</html>
