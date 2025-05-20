@@ -25,7 +25,7 @@ public class indexHtmlFilter implements Filter {
             return;
         }
         // 如果已登录，继续处理请求
-        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);//这个地方要放行。
     }
 
     @Override
