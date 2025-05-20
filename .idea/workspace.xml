@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4fd05e4-6ebd-4e98-b666-69e24d6dcfb1" name="Changes" comment="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息">
+    <list default="true" id="c4fd05e4-6ebd-4e98-b666-69e24d6dcfb1" name="Changes" comment="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -211,7 +211,7 @@
       <updated>1747617651496</updated>
       <workItem from="1747617652453" duration="12186000" />
       <workItem from="1747707102349" duration="1864000" />
-      <workItem from="1747711427858" duration="3339000" />
+      <workItem from="1747711427858" duration="3494000" />
     </task>
     <task id="LOCAL-00001" summary="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息">
       <created>1747647140224</created>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1747647140224</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
+      <created>1747722048720</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747722048720</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +235,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息" />
+    <MESSAGE value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
   </component>
 </project>
