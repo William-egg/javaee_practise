@@ -14,14 +14,6 @@ public class test01 {
     @Test
     public void test02() throws SQLException {
         jdbc myjdbc = new jdbc();
-        Connection connection = myjdbc.getConnection();
-        String sql = "select * from userInfo";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            String username = resultSet.getString("username");
-            String password = resultSet.getString("password");
-            System.out.println("Username: " + username + ", Password: " + password);
-        }
+        System.out.println(myjdbc.ifLogin("smallzhuang", "12345"));
     }
 }

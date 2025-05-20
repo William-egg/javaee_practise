@@ -15,6 +15,7 @@ public class jdbc {
     public jdbc() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+
             connection = java.sql.DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,6 +27,7 @@ public class jdbc {
     public boolean ifLogin(String username,String password){
         String sql = "SELECT * FROM userInfo WHERE username = ? AND password = ?";
         try{
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();

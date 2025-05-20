@@ -13,13 +13,18 @@
     $(document).ready(function() {
         // 这里可以添加你的JavaScript代码
         // 获得session中的username
-        var username = "${sessionScope.username}";
-        // 如果username不为空，在id为helloModule的元素中显示欢迎信息
-        if (username) {
-            $("#helloModule").text("欢迎 " + username + " 登录");
-        } else {
-            $("#helloModule").text("欢迎登录");
-        }
+        $.ajax({
+            url: '/login',
+            type: 'GET',
+            success: function(data) {
+                // 假设返回的数据是一个JSON对象
+                var username = data.username;
+                $('#helloModule').text('Hello, ' + username + '!');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching session data:', error);
+            }
+        })
 
         console.log("Hello World! it is js");
     });
