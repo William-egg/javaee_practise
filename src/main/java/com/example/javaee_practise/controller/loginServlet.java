@@ -1,6 +1,10 @@
 package com.example.javaee_practise.controller;
 
+import com.example.javaee_practise.Dto.userDto;
+import com.example.javaee_practise.model.user;
+import com.example.javaee_practise.service.userService;
 import com.example.javaee_practise.utilts.jdbc;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -13,6 +17,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "loginServlet", value = "/login")
 public class loginServlet extends HttpServlet {
+    private userService myuserService = new userService();
     @Override
     public void init() {
         // Servlet初始化代码
@@ -21,25 +26,39 @@ public class loginServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 处理GET请求
-        String username = (String) request.getSession().getAttribute("username");
-        System.out.println("Username from session: " + username);
-        // 设置响应类型为 JSON
+        user user = (user) request.getSession().getAttribute("user");
+        System.out.println("Username from session: " + user);
         response.setContentType("application/json;charset=UTF-8");
         // 构造一个json数据
         JSONObject jsonResponse = new JSONObject();
-        jsonResponse.put("username", username == null ? "您还尚未登录" : username);
-        PrintWriter out = response.getWriter();
-        out.write(jsonResponse.toString());
-        out.flush();
+        if(user != null){
+            jsonResponse.put("user", new userDto(user).toJson());
+            JSONArray jsonArray = new JSONArray();
+            for(userDto userDto : myuserService.getAllUserInfo()){
+                jsonArray.put(userDto.toJson());
+            }
+            jsonResponse.put("allUser", jsonArray);
+            PrintWriter out = response.getWriter();
+            out.write(jsonResponse.toString());
+            out.flush();
+        }
+        else {
+            // 设置响应类型为 JSON
+
+            jsonResponse.put("username", user.getUsername() == null ? "您还尚未登录" : user.getUsername());
+            PrintWriter out = response.getWriter();
+            out.write(jsonResponse.toString());
+            out.flush();
+        }
     }
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 处理POST请求
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(username+"     "+ password);
-        if(new jdbc().ifLogin(username,password)){//jdbc判断是否为真
-            request.getSession().setAttribute("username", username);
+        user myuser = new user(username,password);
+        if(myuserService.ifLogin(myuser)){//jdbc判断是否为真
+            request.getSession().setAttribute("user", myuser);
             response.sendRedirect("/index.html");
             //接下来的逻辑就是转到index，然后展示所有用户跟本用户的所有信息了。
         }else{

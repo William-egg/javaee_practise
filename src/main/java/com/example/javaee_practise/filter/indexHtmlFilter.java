@@ -1,5 +1,7 @@
 package com.example.javaee_practise.filter;
 
+import com.example.javaee_practise.model.user;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +20,8 @@ public class indexHtmlFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         String uri = httpRequest.getRequestURI();
-        String username = (String) httpRequest.getSession().getAttribute("username");
-        if (username == null) {
+        user user = (user) httpRequest.getSession().getAttribute("user");
+        if (user == null) {
             // 如果没有登录，重定向到登录页面
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
             return;

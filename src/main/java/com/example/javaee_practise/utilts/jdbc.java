@@ -24,20 +24,4 @@ public class jdbc {
     public Connection getConnection() {
         return connection;
     }
-    public boolean ifLogin(String username,String password){
-        String sql = "SELECT * FROM userInfo WHERE username = ? AND password = ?";
-        try{
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-                return true;
-            }else return false;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-    }
 }

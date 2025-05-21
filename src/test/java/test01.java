@@ -13,7 +13,6 @@ public class test01 {
     }
     @Test
     public void test02() throws SQLException {
-        jdbc myjdbc = new jdbc();
-        System.out.println(myjdbc.ifLogin("smallzhuang", "12345"));
+
     }
 }

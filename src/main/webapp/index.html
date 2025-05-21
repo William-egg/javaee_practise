@@ -3,30 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-layer/dist/theme/default/layer.css" />
 </head>
 <body>
   <h1 id="helloModule"></h1>
+  <button id="logoutBtn">Logout</button>
+
+  <button id="showPopup">更改用户信息</button>
+
+<div id="infoBox"></div>
+  <div id="deleteUser">
+      删除第几个元素：<input style="width: 50px; max-width: 100%;" type="number" id="elementIndex" />
+      <button id="deleteUserBtn">Delete</button>
+  </div>
+  <div id="wrapper" style="width: 400px"></div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/gridjs/dist/gridjs.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/layui-layer/dist/layer.js"></script>
+
 <script>
     $(document).ready(function() {
-        // 这里可以添加你的JavaScript代码
-        // 获得session中的username
+        let allUser = null;
+        let user = null;
         $.ajax({
             url: '/login',
             type: 'GET',
             success: function(data) {
                 // 假设返回的数据是一个JSON对象
-                var username = data.username;
+                var username = data.user.username;
+                var password = data.user.password;
+                console.log(data);
                 $('#helloModule').text('Hello, ' + username + '!');
+                $('#infoBox').text('Your password is: ' + password);
+                allUser = data.allUser;
+                user = data.user;
+                new gridjs.Grid({
+                    columns: ["id","username", "password"],
+                    data: data.allUser.map(function(user,index) {
+                        return [index+1,user.username, user.password];
+                    }),
+                }).render(document.getElementById("wrapper"));
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching session data:', error);
+                window.location.href = '/login.html';
             }
         })
+        $('#deleteUserBtn').click(function() {
+            var index = parseInt($('#elementIndex').val());
+            if (isNaN(index) || index < 1|| index > allUser.length) {
+                alert('请输入有效的索引');
+                return;
+            }
+            alert('删除' + allUser[index - 1].username);
+            // $.ajax({
+            //     url: '/deleteUser',
+            //     type: 'POST',
+            //     data: { index: index - 1 },
+            //     success: function(data) {
+            //         console.log(data);
+            //         alert('删除成功');
+            //         window.location.reload();
+            //     },
+            //     error: function(xhr, status, error) {
+            //         console.error('Error deleting user:', error);
+            //         alert('删除失败');
+            //     }
+            // });
+        });
+        $('#logoutBtn').click(function() {
+            $.ajax({
+                url: '/logout',
+                type: 'get',
+                success: function(data) {
+                    console.log(data.status);
+                    if(data.status == 302){
+                        window.location.href = '/login.html';
+                    } else {
+                        alert("登出失败");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error logging out:', error);
+                }
+            });
+        });
+        function showLoginPrompt() {
+            layer.open({
+                type: 1, // 页面层
+                title: '登录', // 弹窗标题
+                area: ['400px', '300px'], // 宽高
+                content: `
+                <div style="padding: 20px;">
+                    <label>用户名：</label>
+                    <input type="text" id="username" value="${user.username}" style="width: 100%; margin-bottom: 10px;" />
+                    <label>密码：</label>
+                    <input type="password" value="${user.password}" id="password" style="width: 100%;" />
+                </div>
+            `,
+                btn: ['确定', '取消'], // 按钮
+                yes: function(index) {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    if (!username || !password) {
+                        layer.msg('请输入用户名和密码');
+                        return;
+                    }
+                    console.log('用户名:', username, '密码:', password);
 
-        console.log("Hello World! it is js");
+        //此处更改密码和用户名，必须传入本来的用户名
+                    $.ajax({
+                        url: '/changeUserInfo',
+                        type: 'post',
+                        data: {
+                            username: user.username,
+                            newUsername: username,
+                            newPassword: password
+                        },
+                        success: function(data) {
+                            console.log(data.status);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error logging out:', error);
+                        }
+                    });
+
+
+
+
+
+                    layer.msg('更改成功');
+                    layer.close(index); // 关闭弹窗
+                    layer.confirm('更改成功，是否要重新登录？', {
+                        icon: 1,
+                        title: '提示',
+                        btn: ['是', '否'] // 按钮
+                    }, function() {
+                        // 用户选择“是”
+                        //还需要在此处吧seesion 清除掉
+                        $.ajax({
+                            url: '/changeUserInfo?logout=1',
+                            type: 'get',
+                            success: function(data) {
+                                console.log(data.status);
+                                if(data.status == 302){
+                                    window.location.href = '/login.html';
+                                } else {
+                                    alert("登出失败");
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error logging out:', error);
+                            }
+                        });
+                    }, function() {
+                        // 用户选择“否”
+                        // 在此处添加session的逻辑
+
+                        $.ajax({
+                            url: '/login',
+                            type: 'GET',
+                            success: function(data) {
+                                // 假设返回的数据是一个JSON对象
+                                var username = data.user.username;
+                                var password = data.user.password;
+                                console.log(data);
+                                $('#helloModule').text('Hello, ' + username + '!');
+                                $('#infoBox').text('Your password is: ' + password);
+                                allUser = data.allUser;
+                                console.log("this is"+allUser);
+                                user = data.user;
+                                const wrapper = document.getElementById("wrapper");
+                                wrapper.innerHTML = "";
+                                new gridjs.Grid({
+                                    columns: ["id","username", "password"],
+                                    data: allUser.map(function(users,index) {
+                                        return [index+1,users.username, users.password];
+                                    }),
+                                }).render(document.getElementById("wrapper"));
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error fetching session data:', error);
+                                window.location.href = '/login.html';
+                            }
+                        })
+                        layer.msg('已取消重新登录');
+                    });
+                },
+                btn2: function() {
+                    layer.msg('取消更改密码');
+                }
+            });
+        }
+        document.getElementById('showPopup').addEventListener('click',showLoginPrompt);
     });
 </script>
 </html>

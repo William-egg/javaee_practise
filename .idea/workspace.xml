@@ -10,11 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4fd05e4-6ebd-4e98-b666-69e24d6dcfb1" name="Changes" comment="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dto/userDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Vo/changeUserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/changeUserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/logoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/model/user.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/service/userService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/ResourceAccessFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/ResourceAccessFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/utilts/jdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/utilts/jdbc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test01.java" afterDir="false" />
@@ -211,7 +217,7 @@
       <updated>1747617651496</updated>
       <workItem from="1747617652453" duration="12186000" />
       <workItem from="1747707102349" duration="1864000" />
-      <workItem from="1747711427858" duration="3494000" />
+      <workItem from="1747711427858" duration="24840000" />
     </task>
     <task id="LOCAL-00001" summary="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息">
       <created>1747647140224</created>
@@ -227,7 +233,21 @@
       <option name="project" value="LOCAL" />
       <updated>1747722048720</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
+      <created>1747722086136</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747722086136</updated>
+    </task>
+    <task id="LOCAL-00004" summary="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
+      <created>1747722159363</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747722159363</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,5 +257,51 @@
     <MESSAGE value="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息" />
     <MESSAGE value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
     <option name="LAST_COMMIT_MESSAGE" value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
