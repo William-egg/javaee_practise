@@ -9,21 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4fd05e4-6ebd-4e98-b666-69e24d6dcfb1" name="Changes" comment="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dto/userDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Vo/changeUserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/changeUserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/logoutServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/model/user.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/service/userService.java" afterDir="false" />
+    <list default="true" id="c4fd05e4-6ebd-4e98-b666-69e24d6dcfb1" name="Changes" comment="完成了用户的登录登出，剩下一个表格不刷新的bug">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/testServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/loginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/filter/indexHtmlFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/utilts/jdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javaee_practise/utilts/jdbc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +205,8 @@
       <updated>1747617651496</updated>
       <workItem from="1747617652453" duration="12186000" />
       <workItem from="1747707102349" duration="1864000" />
-      <workItem from="1747711427858" duration="24840000" />
+      <workItem from="1747711427858" duration="24930000" />
+      <workItem from="1747892654873" duration="1627000" />
     </task>
     <task id="LOCAL-00001" summary="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息">
       <created>1747647140224</created>
@@ -247,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1747722159363</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="完成了用户的登录登出，剩下一个表格不刷新的bug">
+      <created>1747812265403</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747812265403</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +252,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成了jdbc的连接，剩下转到index，展示所有用户跟本用户的所有信息" />
     <MESSAGE value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现了用filter筛选所有的index.html，并且用ajax实现主界面获得用户名" />
+    <MESSAGE value="完成了用户的登录登出，剩下一个表格不刷新的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了用户的登录登出，剩下一个表格不刷新的bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -300,6 +297,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/Dao/loginDao.java</url>
           <line>62</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/javaee_practise/controller/testServlet.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
